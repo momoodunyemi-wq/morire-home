@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Morire Home">
+<title>Morire Home</title>
+<style>
+  * { -webkit-box-sizing: border-box; box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; background: #0b1424; color: #edf3ff; font-family: Arial, Helvetica, sans-serif; }
+  body { padding: 18px; }
+  .shell { max-width: 1100px; margin: 0 auto; }
+  .top { overflow: hidden; margin-bottom: 16px; }
+  .brand { float: left; }
+  .brand h1 { margin: 0; font-size: 28px; letter-spacing: -1px; color: #ffffff; }
+  .brand p { margin: 4px 0 0; color: #91a7c8; font-size: 10px; letter-spacing: 2px; }
+  .status { float: right; margin-top: 7px; padding: 8px 12px; border-radius: 18px; background: #1b3150; color: #9fc5ff; font-size: 10px; letter-spacing: 1px; }
+  .row { overflow: hidden; margin-left: -7px; margin-right: -7px; }
+  .half { float: left; width: 50%; padding: 7px; }
+  .card { background: #14243b; border: 1px solid #243b5b; border-radius: 13px; padding: 16px; }
+  .eyebrow { color: #9bb1d2; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .clock { font-size: 42px; line-height: 1.1; font-weight: bold; margin-top: 8px; color: #fff; }
+  .date { margin-top: 5px; color: #a9bbd6; font-size: 13px; }
+  .room-title { font-size: 23px; font-weight: bold; margin-top: 13px; }
+  .muted { color: #a9bbd6; font-size: 12px; margin-top: 5px; }
+  .section-title { font-size: 14px; margin: 4px 0 10px; color: #dce8fb; }
+  .links { margin: 0 -5px 8px; overflow: hidden; }
+  .link { display: block; float: left; width: 25%; padding: 5px; text-decoration: none; color: #eef4ff; }
+  .link-inner { min-height: 88px; background: #172b47; border: 1px solid #294568; border-radius: 12px; padding: 13px 8px; text-align: center; }
+  .glyph { display: block; font-size: 23px; color: #9fc5ff; margin-bottom: 8px; }
+  .link strong { display: block; font-size: 12px; }
+  .link small { display: block; margin-top: 4px; color: #9eb1cd; font-size: 10px; }
+  .panel { margin-top: 14px; }
+  input, textarea { width: 100%; background: #0f1d31; border: 1px solid #304967; border-radius: 8px; color: #f2f6ff; padding: 10px; font: 14px Arial, sans-serif; outline: none; }
+  textarea { min-height: 95px; resize: vertical; }
+  button { background: #315f9d; border: 0; border-radius: 8px; color: white; padding: 10px 13px; font-size: 12px; margin-top: 8px; }
+  button.secondary { background: #263d5c; }
+  .task-row { padding: 9px 0; border-bottom: 1px solid #263b58; font-size: 13px; color: #e6eefb; }
+  .task-row input { width: auto; margin-right: 8px; vertical-align: middle; }
+  .task-row.done { color: #8194af; text-decoration: line-through; }
+  .hint { color: #8298b8; font-size: 10px; line-height: 1.5; margin-top: 8px; }
+  .footer { text-align: center; color: #7085a4; font-size: 9px; letter-spacing: 1.5px; padding: 18px 0 6px; }
+  @media (max-width: 650px) {
+    body { padding: 10px; }
+    .link { width: 50%; }
+    .clock { font-size: 34px; }
+    .half { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="top">
+    <div class="brand">
+      <h1>morire home.</h1>
+      <p>YOUR PERSONAL SPACE</p>
+    </div>
+    <div class="status">● HOME DASHBOARD</div>
+  </div>
+
+  <div class="row">
+    <div class="half">
+      <div class="card">
+        <div class="eyebrow">Local time</div>
+        <div class="clock" id="clock">--:--</div>
+        <div class="date" id="date">Loading date...</div>
+      </div>
+    </div>
+    <div class="half">
+      <div class="card">
+        <div class="eyebrow">Your space</div>
+        <div class="room-title">My room</div>
+        <div class="muted">A little control centre for your day.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="section-title">Quick access</div>
+    <div class="links">
+      <a class="link" href="https://calendar.google.com/calendar/u/0/r" target="_blank">
+        <div class="link-inner"><span class="glyph">▦</span><strong>Calendar</strong><small>Schedule & events</small></div>
+      </a>
+      <a class="link" href="https://tasks.google.com/" target="_blank">
+        <div class="link-inner"><span class="glyph">☑</span><strong>Google Tasks</strong><small>Your to-do lists</small></div>
+      </a>
+      <a class="link" href="https://keep.google.com/" target="_blank">
+        <div class="link-inner"><span class="glyph">▤</span><strong>Google Keep</strong><small>Notes & ideas</small></div>
+      </a>
+      <a class="link" href="https://www.tuya.com/" target="_blank">
+        <div class="link-inner"><span class="glyph">⌂</span><strong>Smart Life</strong><small>Smart-home account</small></div>
+      </a>
+    </div>
+    <div class="hint">Google and Smart Life links open their websites. For reliable device control, use the Smart Life app on your Galaxy A36; the iPad 2 cannot run the current Smart Life app.</div>
+  </div>
+
+  <div class="row">
+    <div class="half">
+      <div class="card panel">
+        <div class="section-title">Dashboard tasks</div>
+        <div id="tasks"></div>
+        <input id="taskInput" type="text" placeholder="Add a task..." />
+        <button onclick="addTask()">Add task</button>
+        <button class="secondary" onclick="clearDone()">Clear completed</button>
+        <div class="hint">These quick tasks are saved on this iPad in this browser. They do not automatically sync with Google Tasks.</div>
+      </div>
+    </div>
+    <div class="half">
+      <div class="card panel">
+        <div class="section-title">Quick note</div>
+        <textarea id="note" placeholder="Write a reminder, idea or note..."></textarea>
+        <button onclick="saveNote()">Save note</button>
+        <span id="saved" class="hint"></span>
+        <div class="hint">This note is stored locally in Safari on this iPad, not in Google Keep.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">MORIRE HOME · DESK EDITION</div>
+</div>
+<script type="text/javascript">
+(function () {
+  function updateClock() {
+    var now = new Date();
+    var h = now.getHours();
+    var m = now.getMinutes();
+    var ampm = h >= 12 ? "PM" : "AM";
+    var displayHour = h % 12;
+    if (displayHour === 0) displayHour = 12;
+    document.getElementById("clock").innerHTML =
+      (displayHour < 10 ? "0" : "") + displayHour + ":" +
+      (m < 10 ? "0" : "") + m + " " + ampm;
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    document.getElementById("date").innerHTML =
+      days[now.getDay()] + " · " + now.getDate() + " " + months[now.getMonth()] + " " + now.getFullYear();
+  }
+  updateClock();
+  window.setInterval(updateClock, 30000);
+
+  var tasks = [];
+  try { tasks = JSON.parse(localStorage.getItem("morireHomeTasks") || "[]"); } catch (e) { tasks = []; }
+  function renderTasks() {
+    var box = document.getElementById("tasks");
+    box.innerHTML = "";
+    if (!tasks.length) {
+      box.innerHTML = '<div class="hint">Nothing here yet. Add your first task below.</div>';
+      return;
+    }
+    for (var i = 0; i < tasks.length; i++) {
+      var row = document.createElement("div");
+      row.className = "task-row" + (tasks[i].done ? " done" : "");
+      var check = document.createElement("input");
+      check.type = "checkbox";
+      check.checked = tasks[i].done;
+      check.setAttribute("data-index", i);
+      check.onclick = function () {
+        var index = parseInt(this.getAttribute("data-index"), 10);
+        tasks[index].done = this.checked;
+        saveTasks();
+        renderTasks();
+      };
+      row.appendChild(check);
+      row.appendChild(document.createTextNode(tasks[i].text));
+      box.appendChild(row);
+    }
+  }
+  function saveTasks() {
+    try { localStorage.setItem("morireHomeTasks", JSON.stringify(tasks)); } catch (e) {}
+  }
+  window.addTask = function () {
+    var input = document.getElementById("taskInput");
+    var value = input.value.replace(/^\s+|\s+$/g, "");
+    if (!value) return;
+    tasks.push({ text: value, done: false });
+    input.value = "";
+    saveTasks();
+    renderTasks();
+  };
+  window.clearDone = function () {
+    var remaining = [];
+    for (var i = 0; i < tasks.length; i++) if (!tasks[i].done) remaining.push(tasks[i]);
+    tasks = remaining;
+    saveTasks();
+    renderTasks();
+  };
+  renderTasks();
+
+  var note = document.getElementById("note");
+  try { note.value = localStorage.getItem("morireHomeNote") || ""; } catch (e) {}
+  window.saveNote = function () {
+    try {
+      localStorage.setItem("morireHomeNote", note.value);
+      document.getElementById("saved").innerHTML = "Saved on this iPad.";
+    } catch (e) {
+      document.getElementById("saved").innerHTML = "Could not save in this browser.";
+    }
+  };
+})();
+</script>
+</body>
+</html>
